@@ -1,14 +1,10 @@
 import './assets/main.css'
+import './config/http';
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import axios from 'axios'
 import Toast from 'vue-toastification';
 import "vue-toastification/dist/index.css";
-
-axios.defaults.baseURL = 'http://localhost:8000';
-axios.defaults.withCredentials = true;
-axios.defaults.withXSRFToken = true;
 
 import App from './App.vue'
 import router from './router'
