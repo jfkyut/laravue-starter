@@ -10,7 +10,7 @@ import { ref } from 'vue';
 import { useHttpAuth } from '@/http/auth';
 import { useRouter } from 'vue-router';
 
-const { logout, requestEmailVerificationLink } = useHttpAuth();
+const { logoutRequest, emailVerificationRequest } = useHttpAuth();
 
 const toast = useToast();
 const router = useRouter();
@@ -22,15 +22,15 @@ const isLoading = ref(false);
 const sendEmailVerificationLink = async () => {
   isLoading.value = true;
   
-  const { status } = await requestEmailVerificationLink();
+  const { status } = await emailVerificationRequest();
 
   (status) && toast.success(status)
 
   isLoading.value = false;
 }
 
-const logoutUser = async () => {
-  if (await logout()) {
+const logout = async () => {
+  if (await logoutRequest()) {
     user.value = null;
     router.push('/login');
   }
@@ -53,7 +53,7 @@ const logoutUser = async () => {
     </PrimaryButton>
     <LoadingButton v-else class="w-full" />
     <SecondaryButton
-      @click="logoutUser"
+      @click="logout"
       class="w-full">
       <i class="fa fa-sign-out"></i>
       Sign out

@@ -8,7 +8,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
 import { useHttpAuth } from '@/http/auth';
 
-const { resetPassword } = useHttpAuth();
+const { registerRequest } = useHttpAuth();
 
 const toast = useToast();
 const route = useRoute();
@@ -25,10 +25,10 @@ const form = ref({
   password_confirmation: null
 })
 
-const resetUserPassword = async () => {
+const resetPassword = async () => {
   isLoading.value = true;
 
-  const { status } = await resetPassword(form.value)
+  const { status } = await registerRequest(form.value)
   
   if (status) {
     toast.success(status);
@@ -48,7 +48,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <form @submit.prevent="resetUserPassword" class="space-y-6">
+  <form @submit.prevent="resetPassword" class="space-y-6">
     <div class="space-y-2">
       <h5 class="text-xl font-medium text-gray-900 dark:text-white">Password Reset</h5>
       <p>Set up a new password to regain access to your account.</p>

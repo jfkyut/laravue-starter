@@ -11,7 +11,7 @@ import { useProfileStore } from '@/stores/profile';
 import { storeToRefs } from 'pinia';
 
 const { user } = storeToRefs(useProfileStore());
-const { logout } = useHttpAuth();
+const { logoutRequest } = useHttpAuth();
 
 const instance = getCurrentInstance();
 
@@ -19,8 +19,8 @@ const dropdownRef = ref(null);
 
 const router = useRouter();
 
-const logoutUser = async () => {
-  if (await logout()) {
+const logout = async () => {
+  if (await logoutRequest()) {
     user.value = null;
     router.push('/login');
   }
@@ -60,7 +60,7 @@ const handleClickOutside = (e) => {
         <i class="fa fa-user mr-2"></i>
         <span>Account</span>
       </DropdownLink>
-      <DropdownButton @click="logoutUser">
+      <DropdownButton @click="logout">
         <i class="fa fa-sign-out mr-2"></i>
         <span>Sign out</span>
       </DropdownButton>

@@ -8,7 +8,7 @@ import LoadingButton from '@/components/buttons/LoadingButton.vue';
 import { useRouter } from 'vue-router';
 import { useHttpAuth } from '@/http/auth';
 
-const { createAccount } = useHttpAuth();
+const { registerRequest } = useHttpAuth();
 
 const router = useRouter();
 const instance = getCurrentInstance();
@@ -25,7 +25,7 @@ const form = ref({
 
 const register = async () => {
   isLoading.value = true;
-  (await createAccount(form.value)) && router.push('/home');
+  (await registerRequest(form.value)) && router.push('/home');
   isLoading.value = false;
 }
 

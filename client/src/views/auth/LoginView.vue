@@ -8,7 +8,7 @@ import LoadingButton from '@/components/buttons/LoadingButton.vue';
 import { useHttpAuth } from '@/http/auth';
 import { useRouter } from 'vue-router';
 
-const { login } = useHttpAuth();
+const { loginRequest } = useHttpAuth();
 
 const router = useRouter();
 const instance = getCurrentInstance();
@@ -22,10 +22,10 @@ const form = ref({
   remember: false
 })
 
-const loginUser = async () => {
+const login = async () => {
   isLoading.value = true;  
 
-  (await login(form.value)) && router.push('/home')
+  (await loginRequest(form.value)) && router.push('/home')
   
   isLoading.value = false;
 }
@@ -39,7 +39,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <form @submit.prevent="loginUser" class="space-y-6">
+  <form @submit.prevent="login" class="space-y-6">
     <h5 class="text-xl font-medium text-gray-900 dark:text-white">Sign in to our platform</h5>
     <div>
       <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>

@@ -8,7 +8,7 @@ import { useToast } from 'vue-toastification';
 import LoadingButton from '@/components/buttons/LoadingButton.vue';
 import { useHttpAuth } from '@/http/auth';
 
-const { requestPasswordReset } = useHttpAuth();
+const { newPasswordRequest } = useHttpAuth();
 
 const toast = useToast();
 const instance = getCurrentInstance();
@@ -23,7 +23,7 @@ const form = ref({
 const forgotPassword = async () => {
   isLoading.value = true;
 
-  const { status } = await requestPasswordReset(form.value);
+  const { status } = await newPasswordRequest(form.value);
 
   status && toast.success(status)
 
