@@ -51,7 +51,7 @@ const handleClickOutside = (e) => {
 
 <template>
   <div class="relative">
-    <ExtraButton @click.stop="showDropdown">
+    <ExtraButton @click.stop="showDropdown" class="border dark:border-gray-700">
       {{ user?.name }}
     </ExtraButton>
 

@@ -1,5 +1,12 @@
 <script setup>
 
+defineProps({
+  type: {
+    type: String,
+    default: 'button'
+  },
+  class: String
+})
 const emit = defineEmits(['click', 'mouseover', 'mouseout']);
 
 </script>
@@ -7,10 +14,12 @@ const emit = defineEmits(['click', 'mouseover', 'mouseout']);
 <template>
   <li>
     <button
+      :type="type"
       @click="emit('click')"
       @mouseover="emit('mouseover')"
       @mouseout="emit('mouseout')"
-      class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white w-full text-start">
+      :class="class"
+      class="block px-4 py-2 lg:hover:bg-gray-100 lg:dark:hover:bg-gray-600 w-full text-start">
       <slot/>
     </button>
   </li>
