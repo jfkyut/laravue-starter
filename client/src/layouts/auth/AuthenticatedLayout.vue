@@ -56,7 +56,7 @@ watch(currentRouteTitle, (currentRouteTitle) => {
 <template>
   <div class="relative">
     <div
-      :class="isShow ? 'md:ml-[30rem]' : 'md:ml-0'"
+      :class="isShow ? 'md:ml-64' : 'md:ml-0'"
       class="bg-white dark:bg-gray-800 pt-4 p-2 fixed top-0 right-0 left-0 flex justify-between items-center border-b dark:border-gray-700 shadow transition-transform z-10">
       <ExtraButton @click="toggleSidebar">
         <span class="sr-only">Open sidebar</span>
@@ -75,7 +75,7 @@ watch(currentRouteTitle, (currentRouteTitle) => {
     <aside 
       id="default-sidebar" 
       :class="isShow ? 'translate-x-0' : '-translate-x-full'"
-      class="fixed top-0 left-0 z-40 w-64 md:w-[30rem] h-screen transition-transform bg-gray-800 border-r border-gray-700" aria-label="Sidebar">
+      class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform bg-gray-800 border-r border-gray-700" aria-label="Sidebar">
       <div class="px-3 py-4 pt-5">
         <h2 class="text-white font-black uppercase md:text-center">{{ appName }}</h2>
         <button @click="setHide()" type="button" class="md:hidden text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" >
@@ -103,7 +103,7 @@ watch(currentRouteTitle, (currentRouteTitle) => {
     </aside>
     
     <div
-      :class="isShow ? 'md:ml-[30rem]' : 'md:ml-0'"
+      :class="isShow ? 'md:ml-64' : 'md:ml-0'"
       class="p-4 bg-gray-50 dark:bg-gray-900 min-h-screen dark:text-gray-400 transition-transform pt-20">
 
       <div
