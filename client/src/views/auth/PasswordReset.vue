@@ -8,7 +8,7 @@ import { useRoute, useRouter } from 'vue-router';
 import { useToast } from 'vue-toastification';
 import { useHttpAuth } from '@/http/auth';
 
-const { registerRequest } = useHttpAuth();
+const { resetPasswordRequest } = useHttpAuth();
 
 const toast = useToast();
 const route = useRoute();
@@ -28,7 +28,7 @@ const form = ref({
 const resetPassword = async () => {
   isLoading.value = true;
 
-  const { status } = await registerRequest(form.value)
+  const { status } = await resetPasswordRequest(form.value)
   
   if (status) {
     toast.success(status);
